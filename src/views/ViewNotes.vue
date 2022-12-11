@@ -1,12 +1,25 @@
 <template>
-  <div class="notes">
-    <div
-      class="card mb-4"
-      v-for="i in 3"
-    >
+  <div class="notes px-2">
+    <div class="card has-background-success-dark p-4 mb-5">
+      <div class="field">
+        <div class="control">
+          <textarea class="textarea" placeholder="Add a new note" />
+        </div>
+      </div>
+
+      <div class="field is-grouped is-grouped-right">
+        <div class="control">
+          <button class="button is-link has-background-success">Add New Note</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-4" v-for="i in 3">
       <div class="card-content">
         <div class="content">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque architecto quae modi, tenetur excepturi illo tempore dolorum sed atque a eius numquam nisi quidem quo fugit exercitationem sunt quasi molestias!
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque architecto quae modi,
+          tenetur excepturi illo tempore dolorum sed atque a eius numquam nisi quidem quo fugit
+          exercitationem sunt quasi molestias!
         </div>
       </div>
       <footer class="card-footer">
