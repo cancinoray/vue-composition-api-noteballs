@@ -32,39 +32,41 @@
 <script setup>
 import { ref } from "vue";
 import Note from "@/components/Notes/Note.vue";
+import { useStoreNotes } from "@/stores/storeNotes";
+
+// * store
+const storeNotes = useStoreNotes();
 
 const newNote = ref("");
 const newNoteRef = ref("");
 
-const notes = ref([
-  {
-    id: "id1",
-    content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque architecto quae modi,tenetur excepturi illo tempore dolorum sed atque a eius numquam nisi quidem quo fugit exercitationem sunt quasi molestias!`,
-  },
-  {
-    id: "id2",
-    content: `This is a shorte note! Wiitwwewww!`,
-  },
-]);
+// * accesing the state notes in the store
+const notes = storeNotes.notes;
+
+// * accessing the action addNote in the store
+const storeAddNote = storeNotes.addNote;
 
 const addNote = () => {
-  let currentDate = new Date().getTime();
-  let id = currentDate.toString();
+  //using parameters to pass the value of newNote.value to the store action addNote
+  storeAddNote(newNote.value);
+  // let currentDate = new Date().getTime();
+  // let id = currentDate.toString();
 
-  let note = {
-    id,
-    content: newNote.value,
-  };
+  // // * creating new object based on the text field
+  // let note = {
+  //   id,
+  //   content: newNote.value,
+  // };
 
-  notes.value.unshift(note);
+  // notes.value.unshift(note);
   newNote.value = "";
   newNoteRef.value.focus();
 };
 
 //delete note
 const deleteNote = (idToDelete) => {
-  notes.value = notes.value.filter(note => {
+  notes.value = notes.value.filter((note) => {
     return note.id !== idToDelete;
-  })
+  });
 };
 </script>
