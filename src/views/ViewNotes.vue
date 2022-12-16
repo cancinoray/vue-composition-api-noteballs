@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <Note v-for="note in notes" key="note.id" :prop="note" @deleteClicked="deleteNote" />
+    <Note v-for="note in notes" key="note.id" :prop="note" />
   </div>
 </template>
 
@@ -37,36 +37,18 @@ import { useStoreNotes } from "@/stores/storeNotes";
 // * store
 const storeNotes = useStoreNotes();
 
-const newNote = ref("");
-const newNoteRef = ref("");
-
+// * accessing the action addNote in the store
+const storeAddNote = storeNotes.addNote;
 // * accesing the state notes in the store
 const notes = storeNotes.notes;
 
-// * accessing the action addNote in the store
-const storeAddNote = storeNotes.addNote;
+const newNote = ref("");
+const newNoteRef = ref("");
 
 const addNote = () => {
   //using parameters to pass the value of newNote.value to the store action addNote
   storeAddNote(newNote.value);
-  // let currentDate = new Date().getTime();
-  // let id = currentDate.toString();
-
-  // // * creating new object based on the text field
-  // let note = {
-  //   id,
-  //   content: newNote.value,
-  // };
-
-  // notes.value.unshift(note);
   newNote.value = "";
   newNoteRef.value.focus();
-};
-
-//delete note
-const deleteNote = (idToDelete) => {
-  notes.value = notes.value.filter((note) => {
-    return note.id !== idToDelete;
-  });
 };
 </script>

@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { defineStore, acceptHMRUpdate } from 'pinia'
 
 export const useStoreNotes = defineStore('storeNotes', {
   // * state just storage of data
@@ -20,7 +20,26 @@ export const useStoreNotes = defineStore('storeNotes', {
   // * actions are methods that access the state and modify it.
   actions: {
     addNote(newNoteContent) {
-      console.log('addNote', newNoteContent)
+      let currentDate = new Date().getTime();
+      let id = currentDate.toString();
+
+      // * creating new object based on the text field
+      let note = {
+        id,
+        content: newNoteContent
+      };
+      // * this keyword will use to access the notes in state.
+      this.notes.unshift(note)
+    },
+    deleteNote(idToDelete){
+      console.log('this should be working!', idToDelete)
+      this.notes = this.notes.filter((note) => {
+        return note.id !== idToDelete;
+      });
     }
   },
 })
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useStoreNotes, import.meta.hot));
+}
