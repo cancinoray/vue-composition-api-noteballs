@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <Note v-for="note in notes" key="note.id" :prop="note" />
+    <Note v-for="note in storeNotes.notes" key="note.id" :prop="note" />
   </div>
 </template>
 
@@ -37,17 +37,13 @@ import { useStoreNotes } from "@/stores/storeNotes";
 // * store
 const storeNotes = useStoreNotes();
 
-// * accessing the action addNote in the store
-const storeAddNote = storeNotes.addNote;
-// * accesing the state notes in the store
-const notes = storeNotes.notes;
-
 const newNote = ref("");
 const newNoteRef = ref("");
 
 const addNote = () => {
   //using parameters to pass the value of newNote.value to the store action addNote
-  storeAddNote(newNote.value);
+  console.log("newNote:", newNote.value);
+  storeNotes.addNote(newNote.value);
   newNote.value = "";
   newNoteRef.value.focus();
 };

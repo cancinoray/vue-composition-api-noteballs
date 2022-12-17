@@ -10,7 +10,7 @@
     </div>
     <footer class="card-footer">
       <a href="#" class="card-footer-item">Edit</a>
-      <a @click.prevent="storeDeleteNote(prop.id)" class="card-footer-item" href="#"> Delete </a>
+      <a @click.prevent="storeNotes.deleteNote(prop.id)" class="card-footer-item" href="#"> Delete </a>
     </footer>
   </div>
 </template>
@@ -21,8 +21,6 @@ import { useStoreNotes } from "@/stores/storeNotes";
 
 // * store
 const storeNotes = useStoreNotes();
-// * accessing deleteNote action in the store
-const storeDeleteNote = storeNotes.deleteNote;
 
 // * props
 const props = defineProps({
