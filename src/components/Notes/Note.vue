@@ -9,8 +9,10 @@
       </div>
     </div>
     <footer class="card-footer">
-      <a href="#" class="card-footer-item">Edit</a>
-      <a @click.prevent="storeNotes.deleteNote(prop.id)" class="card-footer-item" href="#"> Delete </a>
+      <router-link :to="`editNote/${ prop.id }`" class="card-footer-item" href="#"> Edit </router-link>
+      <a @click.prevent="storeNotes.deleteNote(prop.id)" class="card-footer-item" href="#">
+        Delete
+      </a>
     </footer>
   </div>
 </template>
