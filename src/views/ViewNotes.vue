@@ -1,7 +1,9 @@
 <template>
   <div class="notes px-2">
-    
-    <AddEditNote>
+    <!-- How to use slot -->
+    <AddEditNote
+      v-model="newNote"
+    >
       <template #buttons>
         <button
           class="button is-link has-background-black-bis"

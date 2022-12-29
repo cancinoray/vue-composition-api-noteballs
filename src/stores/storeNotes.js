@@ -5,14 +5,14 @@ export const useStoreNotes = defineStore('storeNotes', {
   state: () => {
     return { 
       notes: [
-        // {
-        //   id: "id1",
-        //   content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque architecto quae modi,tenetur excepturi illo tempore dolorum sed atque a eius numquam nisi quidem quo fugit exercitationem sunt quasi molestias!`,
-        // },
-        // {
-        //   id: "id2",
-        //   content: `This is a short note! Wiitwwewww!`,
-        // }
+        {
+          id: "id1",
+          content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque architecto quae modi,tenetur excepturi illo tempore dolorum sed atque a eius numquam nisi quidem quo fugit exercitationem sunt quasi molestias!`,
+        },
+        {
+          id: "id2",
+          content: `This is a short note! Wiitwwewww!`,
+        }
       ]
     }
   },

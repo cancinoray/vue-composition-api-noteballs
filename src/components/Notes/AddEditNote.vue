@@ -2,7 +2,13 @@
   <div class="card has-background-dark p-4 mb-5">
     <div class="field">
       <div class="control">
-        <textarea class="textarea" placeholder="Add a new note" ref="newNoteRef" />
+        <textarea
+          class="textarea"
+          placeholder="Add a new note"
+          ref="newNoteRef"
+          :value="modelValue"
+          @input="$emit('update:modelValue', $event.target.value)"
+        />
       </div>
     </div>
 
@@ -13,3 +19,14 @@
     </div>
   </div>
 </template>
+
+<script setup>
+const props = defineProps({
+  modelValue: {
+    type: String,
+    required: true,
+  },
+});
+
+const emit = defineEmits(["update:modelValue"]);
+</script>
