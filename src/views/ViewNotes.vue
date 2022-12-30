@@ -1,9 +1,8 @@
 <template>
   <div class="notes px-2">
     <!-- How to use slot -->
-    <AddEditNote
-      v-model="newNote"
-    >
+    <!-- Passing v-model to component -->
+    <AddEditNote v-model="newNote" ref="addEditNoteRef">
       <template #buttons>
         <button
           class="button is-link has-background-black-bis"
@@ -14,30 +13,6 @@
         </button>
       </template>
     </AddEditNote>
-    <!-- <div class="card has-background-dark p-4 mb-5">
-      <div class="field">
-        <div class="control">
-          <textarea
-            class="textarea"
-            placeholder="Add a new note"
-            v-model="newNote"
-            ref="newNoteRef"
-          />
-        </div>
-      </div>
-
-      <div class="field is-grouped is-grouped-right">
-        <div class="control">
-          <button
-            class="button is-link has-background-black-bis"
-            :disabled="!newNote"
-            @click="addNote"
-          >
-            Add New Note
-          </button>
-        </div>
-      </div>
-    </div> -->
 
     <Note v-for="note in storeNotes.notes" key="note.id" :prop="note" />
   </div>
@@ -53,13 +28,13 @@ import AddEditNote from "../components/Notes/AddEditNote.vue";
 const storeNotes = useStoreNotes();
 
 const newNote = ref("");
-const newNoteRef = ref("");
+const addEditNoteRef = ref(null);
 
 const addNote = () => {
   //using parameters to pass the value of newNote.value to the store action addNote
   console.log("newNote:", newNote.value);
   storeNotes.addNote(newNote.value);
   newNote.value = "";
-  newNoteRef.value.focus();
+  addEditNoteRef.value.focusTextarea();
 };
 </script>

@@ -5,7 +5,7 @@
         <textarea
           class="textarea"
           placeholder="Add a new note"
-          ref="newNoteRef"
+          ref="textareaRef"
           :value="modelValue"
           @input="$emit('update:modelValue', $event.target.value)"
         />
@@ -21,6 +21,8 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 const props = defineProps({
   modelValue: {
     type: String,
@@ -29,4 +31,17 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["update:modelValue"]);
+
+// * focus textarea
+const textareaRef = ref(null);
+
+const focusTextarea = () => {
+  textareaRef.value.focus();
+};
+
+// * you need to expose a function of a child component to be able the parent component
+// * to have an access.
+defineExpose({
+  focusTextarea,
+});
 </script>
