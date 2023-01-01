@@ -23,6 +23,8 @@
 <script setup>
 import { ref } from "vue";
 
+// * defining props
+// * props from v-model
 const props = defineProps({
   modelValue: {
     type: String,
