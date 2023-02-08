@@ -28,4 +28,4 @@ const router = createRouter({
     
 });
 
-export default router; // ! it's like we are exposing the router to use by other components. Check tha main.js
+export default router; // * it's like we are exposing the router to use by other components. Check tha main.js

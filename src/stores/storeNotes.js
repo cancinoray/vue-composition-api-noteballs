@@ -34,6 +34,7 @@ export const useStoreNotes = defineStore('storeNotes', {
     },
     deleteNote(idToDelete){
       console.log('this should be working!', idToDelete)
+      // * accessing the state need to use 'this' keyword
       this.notes = this.notes.filter((note) => {
         return note.id !== idToDelete;
       });

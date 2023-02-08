@@ -32,6 +32,7 @@ const props = defineProps({
   },
 });
 
+// * handling emits
 const emit = defineEmits(["update:modelValue"]);
 
 // * focus textarea
