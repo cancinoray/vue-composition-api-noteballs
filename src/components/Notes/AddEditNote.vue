@@ -1,13 +1,16 @@
 <template>
   <div class="card has-background-dark p-4 mb-5">
+    <label v-if="label" class="label has-text-white">{{ label }}</label>
     <div class="field">
       <div class="control">
         <textarea
           class="textarea"
-          placeholder="Add a new note"
+          :placeholder="props.placeholder"
           ref="textareaRef"
           :value="modelValue"
           @input="$emit('update:modelValue', $event.target.value)"
+          maxlength="100"
+          v-autofocus
         />
       </div>
     </div>
@@ -22,6 +25,7 @@
 
 <script setup>
 import { ref } from "vue";
+import { vAutofocus } from "@/directives/vAutofocus";
 
 // * defining props
 // * props from v-model
@@ -29,6 +33,17 @@ const props = defineProps({
   modelValue: {
     type: String,
     required: true,
+  },
+  bgColor: {
+    type: String,
+    default: "success",
+  },
+  placeholder: {
+    type: String,
+    default: "Type something...",
+  },
+  label: {
+    type: String,
   },
 });
 
@@ -47,4 +62,6 @@ const focusTextarea = () => {
 defineExpose({
   focusTextarea,
 });
+
+//* Directive
 </script>
